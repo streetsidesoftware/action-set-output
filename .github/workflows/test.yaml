@@ -33,6 +33,7 @@ jobs:
         - Symbols $ ! # @ / \
 
     steps:
+      - uses: actions/checkout@v3
       - name: Set the Text
         id: set-text
         uses: ./
