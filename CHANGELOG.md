@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/streetsidesoftware/action-set-output/compare/v1.0.2...v1.0.3) (2023-01-14)
+
+
+### Updates and Bug Fixes
+
+* Rename Action ([#7](https://github.com/streetsidesoftware/action-set-output/issues/7)) ([1a792fb](https://github.com/streetsidesoftware/action-set-output/commit/1a792fb41a1d1609d65b1468e5bc2b49ab85ce18))
+
 ## [1.0.2](https://github.com/streetsidesoftware/action-set-output/compare/v1.0.1...v1.0.2) (2023-01-14)
 
 
