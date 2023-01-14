@@ -1,0 +1,51 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-set-os:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      # the integration tests are independent, so we want to run them all.
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+    outputs:
+      text: ${{ steps.set-text.outputs.value }}
+
+    env:
+      sample-text: |
+        This is some text.
+        - With multiple lines.
+        - Symbols $ ! # @ / \
+
+    steps:
+      - name: Set the Text
+        id: set-text
+        uses: ./
+        with:
+          value: ${{ env.sample-text }}
+
+      - name: Echo value
+        env:
+          TEXT: ${{ steps.set-text.outputs.value }}
+        run: |
+          echo "$TEXT"
+
+      - name: Test the Value
+        if: ${{ steps.set-text.outputs.value != env.sample-text }}
+        run: |
+          exit 1
