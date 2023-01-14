@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/streetsidesoftware/action-set-output/compare/v1.0.1...v1.0.2) (2023-01-14)
+
+
+### Updates and Bug Fixes
+
+* add branding ([#5](https://github.com/streetsidesoftware/action-set-output/issues/5)) ([1353306](https://github.com/streetsidesoftware/action-set-output/commit/1353306334de9cca25be0f4a3c5e66bfc45eb5b4))
+
 ## [1.0.1](https://github.com/streetsidesoftware/action-set-output/compare/v1.0.0...v1.0.1) (2023-01-14)
 
 
