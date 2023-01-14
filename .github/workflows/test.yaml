@@ -1,0 +1,92 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  sample-text: |
+    This is some text.
+    - With multiple lines.
+    - Symbols $ ! # @ / \
+
+jobs:
+  test-set-os:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      # the integration tests are independent, so we want to run them all.
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+    outputs:
+      text: ${{ steps.set-text.outputs.value }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set the Text
+        id: set-text
+        uses: ./
+        with:
+          value: ${{ env.sample-text }}
+
+      - name: Echo value
+        env:
+          TEXT: ${{ steps.set-text.outputs.value }}
+        run: |
+          echo "$TEXT"
+
+      - name: Test the Value
+        if: ${{ steps.set-text.outputs.value != env.sample-text }}
+        run: |
+          exit 1
+
+  test-set-output:
+    runs-on: ubuntu-latest
+    outputs:
+      text: ${{ steps.set-text.outputs.value }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set the Text
+        id: set-text
+        uses: ./
+        with:
+          value: ${{ env.sample-text }}
+      - uses: ./.github/actions/summary
+        with:
+          text: |
+            # Test Setting the Output
+
+            text:
+            ```
+            ${{ steps.set-text.outputs.value }}
+            ```
+  test-got-output:
+    runs-on: ubuntu-latest
+    needs:
+      - test-set-output
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/summary
+        with:
+          text: |
+            # Test the Results
+
+            text:
+            ```
+            ${{ needs.test-set-output.outputs.text }}
+            ```
+      - name: Test the Value
+        if: ${{ needs.test-set-output.outputs.text != env.sample-text }}
+        run: |
+          exit 1
