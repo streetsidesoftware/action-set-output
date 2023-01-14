@@ -40,7 +40,7 @@ inputs:
 The entire action is reproduced here to show how simple it is:
 
 ```yaml
-name: set-output
+name: set-step-output
 description: |
   Set the output for this step to any text value.
 author: "Street Side Software <info@streetsidesoftware.nl>"

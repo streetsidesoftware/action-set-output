@@ -1,4 +1,4 @@
-name: set-output
+name: set-step-output
 description: |
   Set the output for this step to any text value.
 author: "Street Side Software <info@streetsidesoftware.nl>"
