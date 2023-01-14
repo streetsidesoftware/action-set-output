@@ -2,6 +2,9 @@ name: set-step-output
 description: |
   Set the output for this step to any text value.
 author: "Street Side Software <info@streetsidesoftware.nl>"
+branding:
+  icon: activity
+  color: orange
 inputs:
   value:
     description: The value to return.
