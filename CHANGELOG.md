@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4](https://github.com/streetsidesoftware/action-set-output/compare/v1.0.3...v1.0.4) (2024-05-18)
+
+
+### Miscellaneous
+
+* Update release-please.yml ([210f19a](https://github.com/streetsidesoftware/action-set-output/commit/210f19a93312fe9c06bcd2244e052eb54e620ebe))
+* Update release-please.yml ([dbdaaa4](https://github.com/streetsidesoftware/action-set-output/commit/dbdaaa42f0716c3ba5a18239dd2f85cfbb34d837))
+
 ## [1.0.3](https://github.com/streetsidesoftware/action-set-output/compare/v1.0.2...v1.0.3) (2023-01-14)
 
 
